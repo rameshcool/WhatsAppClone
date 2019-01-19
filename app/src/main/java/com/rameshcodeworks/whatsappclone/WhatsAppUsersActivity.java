@@ -34,7 +34,7 @@ public class WhatsAppUsersActivity extends AppCompatActivity implements AdapterV
         final ListView listView = findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
         waUsers = new ArrayList<>();
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, waUsers);
+        final ArrayAdapter adapter = new ArrayAdapter(this, R.layout.text_layout, waUsers);
 
         final SwipeRefreshLayout mySwipeRefreshLayout = findViewById(R.id.swipeContainer);
 
@@ -42,7 +42,8 @@ public class WhatsAppUsersActivity extends AppCompatActivity implements AdapterV
 
             ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
             parseQuery.whereNotEqualTo("username", ParseUser.getCurrentUser().getUsername());
-            parseQuery.findInBackground(new FindCallback<ParseUser>() {
+            parseQuery.findInBackground(
+                    new FindCallback<ParseUser>() {
                 @Override
                 public void done(List<ParseUser> objects, ParseException e) {
 
